@@ -1,0 +1,14 @@
+# package directories
+node_modules
+jspm_packages
+
+# Serverless directories
+<<<<<<< HEAD
+.serverless
+
+# Terraform modules
+terraform/.terraform
+
+=======
+.serverless
+>>>>>>> 608126c5853fd4bebf0c8253ba0a9433b1463733

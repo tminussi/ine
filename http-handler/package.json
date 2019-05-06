@@ -1,0 +1,9 @@
+{
+  "name": "http-handler",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "devDependencies": {
+    "aws-sdk": "^2.445.0"
+  }
+}

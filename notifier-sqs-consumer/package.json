@@ -1,0 +1,12 @@
+{
+  "name": "notifier-sqs-consumer",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "devDependencies": {
+    "aws-sdk": "^2.448.0"
+  },
+  "dependencies": {
+    "twilio": "^3.30.3"
+  }
+}

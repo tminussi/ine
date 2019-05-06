@@ -1,0 +1,23 @@
+service: notifier-sqs-consumer
+
+provider:
+  name: aws
+  runtime: nodejs8.10
+  stage: dev
+  region: eu-west-1
+
+functions:
+  consumer:
+    role: ${cf:${self:custom.stage}-ine-outputs.EmailRoleARN}
+    handler: src/handler.consumer
+
+    events:
+     - sqs: ${self:custom.queue_arn}
+    environment: 
+      TWILLIO_FROM_PHONE_NUMBER: ${cf:${self:custom.stage}-ine-outputs.TwillioFromPhoneNumber}
+      TWILLIO_ACCOUNT_SID: ${cf:${self:custom.stage}-ine-outputs.TwillioAccountSid}
+      TWILLIO_AUTH_TOKEN: ${cf:${self:custom.stage}-ine-outputs.TwillioAuthToken}
+
+custom:
+  stage: ${opt:stage, self:provider.stage}
+  queue_arn: ${cf:${self:custom.stage}-ine-outputs.QueueARN}
