@@ -8,7 +8,7 @@ const SES = new AWS.SES()
 
 const client = require('twilio')(process.env.TWILLIO_ACCOUNT_SID, process.env.TWILLIO_AUTH_TOKEN);
 
-const sendEmail = async data => {
+const notify = async data => {
     console.log(`sending email to ${data.caregiver_email}..., `)
     try {
         if (data.caregiver_email) {
@@ -47,5 +47,5 @@ const sendEmail = async data => {
 }
 
 module.exports = {
-    sendEmail
+    notify
 }
