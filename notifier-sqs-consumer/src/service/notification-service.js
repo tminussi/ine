@@ -33,6 +33,7 @@ const notify = async data => {
             }).promise()
         }
         if (data.caregiver_phone) {
+            console.log(`sending SMS to ${data.caregiver_phone}..., `)
             await client.messages
                 .create({
                     body: 'Beloved one is not doing well!',
