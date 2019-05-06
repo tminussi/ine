@@ -21,4 +21,3 @@ variable "twillio_auth_token" {
 variable "twillio_from_phone_number" {
   
 }
-

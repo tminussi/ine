@@ -9,6 +9,7 @@ const SES = new AWS.SES()
 const client = require('twilio')(process.env.TWILLIO_ACCOUNT_SID, process.env.TWILLIO_AUTH_TOKEN);
 
 const notify = async data => {
+    console.log('data loaded', data)
     try {
         if (data.caregiver_email) {
             console.log(`sending email to ${data.caregiver_email}..., `)

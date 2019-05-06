@@ -1,0 +1,20 @@
+service: due-notifications-poller # NOTE: update this with your service name
+
+provider:
+  name: aws
+  runtime: nodejs8.10
+  stage: dev
+  region: eu-west-1
+
+functions:
+  poller:
+    handler: handler.poller
+    role: ${cf:${self:custom.stage}-ine-outputs.PollerRoleARN}
+    events:
+     - schedule: rate(8 hours)
+    environment: 
+      INE_NOTIFICATIONS_TABLE: ${cf:${self:custom.stage}-ine-outputs.IneNotificationsTableName}
+      INE_QUEUE_URL: ${cf:${self:custom.stage}-ine-outputs.QueueURL}
+
+custom:
+  stage: ${opt:stage, self:provider.stage}

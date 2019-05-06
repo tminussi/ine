@@ -18,6 +18,7 @@ module "cloud_formation_stack" {
   ine_registrations_table = "${module.storage.ine_registrations_table}"
   ine_notifications_table = "${module.storage.ine_notifications_table}"
   email_role_arn = "${module.iam_role.email_role_arn}"
+  poller_role_arn = "${module.iam_role.poller_role_arn}"
   twillio_account_sid = "${var.twillio_account_sid}"
   twillio_auth_token = "${var.twillio_auth_token}"
   twillio_from_phone_number = "${var.twillio_from_phone_number}"

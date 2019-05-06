@@ -40,6 +40,10 @@ resource "aws_cloudformation_stack" "ine_outputs" {
       "Description": "ARN for Email ROle",
       "Value": "${var.email_role_arn}"
     },
+    "PollerRoleARN": {
+      "Description": "ARN for Poller Role",
+      "Value": "${var.poller_role_arn}"
+    },
     "TwillioFromPhoneNumber": {
       "Description": "Phone number configured in Twillio",
       "Value": "${var.twillio_from_phone_number}"
