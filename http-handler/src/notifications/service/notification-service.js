@@ -25,6 +25,7 @@ const put = async data => {
             message: 'Your caregiver will be notified immediately!'
         })
     }
+    data.id = Buffer.from(data.source_id, 'utf-8').toString('base64')
     data.caregiver_details = await dynamodb.fetchOne(data.source_id)
     data.next_notification = new Date().getTime() + intervals[data.caregiver_details.interval]
     data.message = 'Thanks for letting us know you are OK.'
