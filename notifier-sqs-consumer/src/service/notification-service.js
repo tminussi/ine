@@ -10,6 +10,10 @@ const client = require('twilio')(process.env.TWILLIO_ACCOUNT_SID, process.env.TW
 
 const notify = async data => {
     console.log('data loaded', data)
+    let message = 'PANIC BUTTON PUSHED. REACT NOW!';
+    if (data.level === 'OK') {
+        message = 'Beloved one has not pushed the button in a while. You should check'
+    }
     try {
         if (data.caregiver_email) {
             console.log(`sending email to ${data.caregiver_email}..., `)
@@ -21,7 +25,7 @@ const notify = async data => {
                     Body: {
                         Text: {
                             Charset: "UTF-8",
-                            Data: "Your loved one has pushed the PANIC button and needs HELP."
+                            Data: message
                         }
                     },
                     Subject: {
@@ -37,7 +41,7 @@ const notify = async data => {
             console.log(`sending SMS to ${data.caregiver_phone}..., `)
             await client.messages
                 .create({
-                    body: 'Beloved one is not doing well!',
+                    body: message,
                     from: process.env.TWILLIO_FROM_PHONE_NUMBER,
                     to: data.caregiver_phone
                 })
