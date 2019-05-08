@@ -10,10 +10,7 @@ const client = require('twilio')(process.env.TWILLIO_ACCOUNT_SID, process.env.TW
 
 const notify = async data => {
     console.log('data loaded', data)
-    let message = 'PANIC BUTTON PUSHED. REACT NOW!';
-    if (data.level === 'OK') {
-        message = 'Beloved one has not pushed the button in a while. You should check'
-    }
+    const message = data.level === 'OK' ? 'Beloved one has not pushed the button in a while. You should check' : 'PANIC BUTTON PUSHED. REACT NOW!';
     try {
         if (data.caregiver_email) {
             console.log(`sending email to ${data.caregiver_email}..., `)
